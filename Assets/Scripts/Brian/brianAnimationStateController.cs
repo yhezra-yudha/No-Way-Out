@@ -7,6 +7,7 @@ public class brianAnimationStateController : MonoBehaviour
     Animator animator;
     int isWalkForwardHash, isRunningHash;
     Vector3 velocity;
+    public float speed;
 
 
 
@@ -17,6 +18,7 @@ public class brianAnimationStateController : MonoBehaviour
         isWalkForwardHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
 
+        StartCoroutine(CalcSpeed());
     }
 
     // Update is called once per frame
@@ -27,8 +29,20 @@ public class brianAnimationStateController : MonoBehaviour
         // bool runPressed = Input.GetKey(KeyCode.O);
         // bool forwardPressed = Input.GetKey(KeyCode.I);
         
-        animator.SetBool(isWalkForwardHash, true);
-        animator.SetBool(isRunningHash, true);
+        if(speed < 0.5)
+        {
+            animator.SetBool(isWalkForwardHash, false);
+            animator.SetBool(isRunningHash, false);
+        }else if (speed >= 0.5 && speed < 2.5)
+        {
+            animator.SetBool(isWalkForwardHash, true);
+            animator.SetBool(isRunningHash, false);
+        }
+        else if(speed>=2.5)
+        {
+            animator.SetBool(isRunningHash, true);
+            animator.SetBool(isWalkForwardHash, false);
+        }
 
         // //Walk Forward
         // if (!isWalkForward && forwardPressed)
@@ -51,5 +65,19 @@ public class brianAnimationStateController : MonoBehaviour
         // {
         //     animator.SetBool(isRunningHash, false);
         // }
+    }
+
+    IEnumerator CalcSpeed()
+    {
+        bool isPlaying = true;
+
+        while (isPlaying)
+        {
+            Vector3 prevPos = transform.position;
+
+            yield return new WaitForFixedUpdate();
+
+            speed = Vector3.Distance(transform.position, prevPos) / Time.fixedDeltaTime;
+        }
     }
 }
