@@ -13,16 +13,17 @@ public class RandomSpawner : MonoBehaviour
 
     void Start()
     {
-        keyLocation.Add(new Vector3(16, 4, 16));
+        Debug.Log(key.tag);
+        Debug.Log(canSoda.tag);
         keyLocation.Add(new Vector3((float)-13.9, (float)0.5, (float)9.5));
         keyLocation.Add(new Vector3(7, (float)2.4, (float)11.2));
         keyLocation.Add(new Vector3(-20, (float)1.8, (float)-11.2));
         keyLocation.Add(new Vector3((float)8.43, (float)0.78, (float)6.45));
 
-        canSodaLocation.Add(new Vector3((float)17.81, (float)0.5, (float)-6.83));
-        canSodaLocation.Add(new Vector3((float)7.6, (float)0.5, (float)-12.7));
-        canSodaLocation.Add(new Vector3((float)-3.64, (float)0.5, (float)-7.33));
-        canSodaLocation.Add(new Vector3((float)-12.4, (float)0.5, (float)1.73));
+        canSodaLocation.Add(new Vector3((float)17.81, (float)1, (float)-6.83));
+        canSodaLocation.Add(new Vector3((float)7.6, (float)1, (float)-12.7));
+        canSodaLocation.Add(new Vector3((float)-3.64, (float)1, (float)-7.33));
+        canSodaLocation.Add(new Vector3((float)-12.4, (float)1, (float)1.73));
 
         Instantiate(key, keyLocation[Random.Range(0, keyLocation.Count)], Quaternion.Euler(90,0,0));
 

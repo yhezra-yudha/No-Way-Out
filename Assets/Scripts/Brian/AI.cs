@@ -119,9 +119,9 @@ public class AI: MonoBehaviour
             m_PlayerNear = false;           
             playerLastPosition = Vector3.zero;
             navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
-            Debug.Log(navMeshAgent.remainingDistance);
-            Debug.Log(navMeshAgent.stoppingDistance);
-            Debug.Log(waypoints[m_CurrentWaypointIndex]);
+            //Debug.Log(navMeshAgent.remainingDistance);
+            //Debug.Log(navMeshAgent.stoppingDistance);
+            //Debug.Log(waypoints[m_CurrentWaypointIndex]);
             if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance + 3)
             {
                 
